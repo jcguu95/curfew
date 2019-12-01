@@ -19,9 +19,6 @@ FunTimeStarts=170000 ; FunTimeEnds=173000
 CurfewStarts=174000 ; CurfewEnds=235959
 MidnightWorkStarts=000000 ; MidnightWorkEnds=060000
 
-Indulgence=600
-
-
 # Auxiliary functions
 	if_within() {
 		now=$(date +"%H%M%S") ; Start=$1 ; End=$2 ;
