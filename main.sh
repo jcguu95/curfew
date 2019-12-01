@@ -1,7 +1,7 @@
 #!/bin/bash
 ## make sure your bash is after v4.0 for `readarray` to work.
 
-mainDir="/root/curfew" ; mkdir $mainDir/log
+mainDir="/root/curfew" ; mkdir $mainDir/log ; mkdir $mainDir/log/indulgence
 
 # Everything below will go to the file '$logfile':
 logfile=$mainDir/log/$(date "+%Y-%m-%dT%H:%M:%S%z").txt
@@ -11,15 +11,17 @@ exec 1>$logfile 2>&1
 
 # configs
 ## readarray is supported only after bash 4.0
-readarray -t app_list < $mainDir/list/app_list
-readarray -t user_list < $mainDir/list/user_list
-readarray -t url_list < $mainDir/list/url_list
+readarray -t app_list < $mainDir/config/app_list
+readarray -t user_list < $mainDir/config/user_list
+readarray -t url_list < $mainDir/config/url_list
 
 FunTimeStarts=170000 ; FunTimeEnds=173000
 CurfewStarts=174000 ; CurfewEnds=235959
 MidnightWorkStarts=000000 ; MidnightWorkEnds=060000
 
-Indulgence=600
+readarray -t indulgence
+indulgence=600
+indulgenceSession="False"
 
 
 # Auxiliary functions
@@ -93,7 +95,9 @@ main() {
 		# if [[ $(date +%u) -lt 7 ]] ; then 					# restrictions on non-Sundays
 		if [[ $(date +%u) -lt 8 ]] ; then 					# restrictions everyday!
 
-			if $(if_within $FunTimeStarts $FunTimeEnds) ; then		# during fun-time
+			if [[ $indulgenceSession == "True" ]] ; then
+				echo "message: indulgence-session on; no restrictions impulsed"
+			elif $(if_within $FunTimeStarts $FunTimeEnds) ; then		# during fun-time
 				echo "message: fun-time on"
 				unban_url
 			elif $(if_within $MidnightWorkStarts $MidnightWorkEnds)	; then	# during midnight-work-time
