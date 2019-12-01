@@ -15,7 +15,7 @@ readarray -t app_list < $mainDir/list/app_list
 readarray -t user_list < $mainDir/list/user_list
 readarray -t url_list < $mainDir/list/url_list
 
-FunTimeStarts=170000 ; FunTimeEnds=173000
+FunTimeStarts=170000 ; FunTimeEnds=171000
 CurfewStarts=174000 ; CurfewEnds=235959
 MidnightWorkStarts=000000 ; MidnightWorkEnds=060000
 
