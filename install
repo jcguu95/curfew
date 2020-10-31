@@ -5,18 +5,18 @@ error() {
 	echo "$2"; exit "$1"; } 
 ##########################################
 
-[ -f /etc/systemd/system/rc-local.service ] && error 1 "/etc/systemd/system/rc-local.service has existed. Please install curfew manually. exit 1.."
-[ -f /etc/rc.local ] && error 2 "/etc/rc.local has existed. Please install curfew manually. exit 2.."
+[ -f /etc/systemd/system/curfew.d.service ] && error 1 "/etc/systemd/system/curfew.d.service has existed. Please install curfew manually. exit 1.."
+[ -f /etc/curfew.d ] && error 2 "/etc/curfew.d has existed. Please install curfew manually. exit 2.."
 
 # Installation
-echo "Copying rc-local.service to /etc/systemd/system/rc-local.service.";
-cp "./rc-local.service" "/etc/systemd/system/rc-local.service" && echo "done!" || echo "fail!" 
-echo "Enabling rc-local.service";
-systemctl enable rc-local.service && echo "done!" || echo "fail!" 
-echo "Creating rc.local and its content."; 
-cp "./rc.local" "/etc/rc.local" && echo "done!" || echo "fail!" 
-echo "Making rc.local executable.";
-chmod +x /etc/rc.local && echo "done!" || echo "fail!"
+echo "Copying curfew.d.surface to /etc/systemd/system/curfew.d.surface.";
+cp "./unit/curfew.d.surface" "/etc/systemd/system/curfew.d.surface" && echo "done!" || echo "fail!" 
+echo "Enabling curfew.d.surface";
+systemctl enable curfew.d.surface && echo "done!" || echo "fail!" 
+echo "Creating curfew.d and its content."; 
+cp "./unit/curfew.d" "/etc/curfew.d" && echo "done!" || echo "fail!" 
+echo "Making curfew.d executable.";
+chmod +x /etc/curfew.d && echo "done!" || echo "fail!"
 
 read -n 1 -s -r -p "Done. Press any key to continue."
 echo ""
