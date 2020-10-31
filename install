@@ -9,10 +9,10 @@ error() {
 [ -f /etc/curfew.d ] && error 2 "/etc/curfew.d has existed. Please install curfew manually. exit 2.."
 
 # Installation
-echo "Copying curfew.d.surface to /etc/systemd/system/curfew.d.surface.";
-cp "./unit/curfew.d.surface" "/etc/systemd/system/curfew.d.surface" && echo "done!" || echo "fail!" 
-echo "Enabling curfew.d.surface";
-systemctl enable curfew.d.surface && echo "done!" || echo "fail!" 
+echo "Copying curfew.d.service to /etc/systemd/system/curfew.d.service.";
+cp "./unit/curfew.d.service" "/etc/systemd/system/curfew.d.service" && echo "done!" || echo "fail!" 
+echo "Enabling curfew.d.service";
+systemctl enable curfew.d.service && echo "done!" || echo "fail!" 
 echo "Creating curfew.d and its content."; 
 cp "./unit/curfew.d" "/etc/curfew.d" && echo "done!" || echo "fail!" 
 echo "Making curfew.d executable.";
