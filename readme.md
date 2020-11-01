@@ -1,6 +1,4 @@
-# curfew
-
-*Motto: Through limit to freedom!*
+# Through limit to freedom!
 
 Self-control at the next-level by handling your root password to
 someone else.
