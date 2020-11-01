@@ -10,11 +10,11 @@ error() {
 
 # Installation
 echo "Copying curfew.d.service to /etc/systemd/system/curfew.d.service.";
-cp "./unit/curfew.d.service" "/etc/systemd/system/curfew.d.service" && echo "done!" || echo "fail!"
+cp "/root/curfew/unit/curfew.d.service" "/etc/systemd/system/curfew.d.service" && echo "done!" || echo "fail!"
 echo "Enabling curfew.d.service";
 systemctl enable curfew.d.service && echo "done!" || echo "fail!"
 echo "Creating curfew.d and its content.";
-cp "./unit/curfew.d" "/etc/curfew.d" && echo "done!" || echo "fail!"
+cp "/root/curfew/unit/curfew.d" "/etc/curfew.d" && echo "done!" || echo "fail!"
 echo "Making curfew.d executable.";
 chmod +x /etc/curfew.d && echo "done!" || echo "fail!"
 
