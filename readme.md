@@ -2,6 +2,10 @@
 
 This dirty script set restrictions on my digital usage. Use at your own risk!
 
+## Install
+
+Manuall move this repo into `/root/`. Run `install` as root.
+
 ## Configuration
 
 + Add the urls to be banned to `./list/url_list`.
