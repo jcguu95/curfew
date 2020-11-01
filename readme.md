@@ -29,6 +29,8 @@ lines are in the lists.
 + Add the apps to be killed to `./list/app_list`.
 + Add the users to be suspended to `./list/user_list`.
 
+To configure curfew time, alter the `main` shell script directly.
+
 ### Loggings
 
 All logs go to `/root/curfew/log/`.
@@ -38,3 +40,4 @@ All logs go to `/root/curfew/log/`.
 + [ ] Inform users before doing anything.
 + [ ] I'm sure the solution isn't perfect. Please let me know how
   it can be harden.
++ [ ] Report any errors and warnings (loudly) at the end.
