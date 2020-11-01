@@ -1,0 +1,18 @@
+#!/bin/sh
+
+echo "To fully uninstall, you still have to manually remove the curfew repo yourself."
+echo "For it to have worked, it should be under the root's home."
+
+rm -v "/etc/systemd/system/curfew.d.service" "/etc/curfew.d"
+systemctl enable curfew.d.service
+
+echo "systemctl stop curfew.d.service"
+systemctl stop curfew.d.service
+echo "systemctl disable curfew.d.service"
+systemctl disable curfew.d.service
+echo "systemctl daemon-reload"
+systemctl daemon-reload
+echo "systemctl reset-failed"
+systemctl reset-failed
+
+exit

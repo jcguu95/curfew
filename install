@@ -1,8 +1,8 @@
-#!/bin/sh 
+#!/bin/sh
 
-############ Auxiliary Function ########## 
+############ Auxiliary Function ##########
 error() {
-	echo "$2"; exit "$1"; } 
+	echo "$2"; exit "$1"; }
 ##########################################
 
 [ -f /etc/systemd/system/curfew.d.service ] && error 1 "/etc/systemd/system/curfew.d.service has existed. Please install curfew manually. exit 1.."
@@ -10,11 +10,11 @@ error() {
 
 # Installation
 echo "Copying curfew.d.service to /etc/systemd/system/curfew.d.service.";
-cp "./unit/curfew.d.service" "/etc/systemd/system/curfew.d.service" && echo "done!" || echo "fail!" 
+cp "./unit/curfew.d.service" "/etc/systemd/system/curfew.d.service" && echo "done!" || echo "fail!"
 echo "Enabling curfew.d.service";
-systemctl enable curfew.d.service && echo "done!" || echo "fail!" 
-echo "Creating curfew.d and its content."; 
-cp "./unit/curfew.d" "/etc/curfew.d" && echo "done!" || echo "fail!" 
+systemctl enable curfew.d.service && echo "done!" || echo "fail!"
+echo "Creating curfew.d and its content.";
+cp "./unit/curfew.d" "/etc/curfew.d" && echo "done!" || echo "fail!"
 echo "Making curfew.d executable.";
 chmod +x /etc/curfew.d && echo "done!" || echo "fail!"
 
